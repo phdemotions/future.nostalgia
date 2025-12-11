@@ -7,16 +7,19 @@
 
   <meta name="description" content="Future.Nostalgia brings retro-future instant analog prints to events, festivals, and tourism experiences. Physical keepsakes, minimal setup, $10 per print.">
 
+  <!-- Favicon using rotated cyan square -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'>
+    <rect x='25' y='25' width='100' height='100' fill='%232FF3E0' stroke='%230B0B0C' stroke-width='10' transform='rotate(-12 75 75)'/>
+  </svg>" />
+
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* BRAND COLORS */
     :root {
       --black: #0B0B0C;
       --cream: #F7EEDA;
       --cyan: #2FF3E0;
-      --red: #E63946;
-      --blue: #4A7AFF;
     }
 
     body {
@@ -27,21 +30,39 @@
       line-height: 1.6;
     }
 
-    /* HEADER / HERO */
+    /* HEADER */
     header {
       max-width: 1100px;
       margin: auto;
-      padding: 4rem 1.5rem 5rem;
-      position: relative;
+      padding: 2.5rem 1.5rem 5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
-    h1 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 4rem;
-      font-weight: 600;
-      margin: 0;
-      letter-spacing: -1px;
-      line-height: 1.05;
+    .logo svg {
+      height: 48px;
+    }
+
+    .symbol {
+      width: 36px;
+      height: 36px;
+      display: inline-block;
+      transform: rotate(-12deg);
+    }
+
+    .symbol-block {
+      background: var(--cyan);
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--black);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem 1.5rem 4rem;
     }
 
     .hero-block {
@@ -60,7 +81,7 @@
       font-size: 1.35rem;
     }
 
-    /* MAIN SECTIONS */
+    /* SECTIONS */
     section {
       max-width: 1100px;
       margin: 4rem auto;
@@ -78,9 +99,9 @@
       background: var(--black);
       color: var(--cream);
       padding: 0.4rem 0.8rem;
-      display: inline-block;
       font-family: "Space Grotesk", sans-serif;
       font-weight: 600;
+      display: inline-block;
       transform: rotate(-1.5deg);
       margin-bottom: 0.6rem;
     }
@@ -126,14 +147,28 @@
 <body>
 
 <header>
-  <h1>FUTURE.<br>NOSTALGIA</h1>
+  <!-- Primary Wordmark -->
+  <div class="logo">
+    <svg width="420" height="60" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="82" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="72" letter-spacing="-1">
+        FUTURE.NOSTALGIA
+      </text>
+    </svg>
+  </div>
 
+  <!-- Rotated Cyan Symbol -->
+  <div class="symbol">
+    <div class="symbol-block"></div>
+  </div>
+</header>
+
+<div class="hero">
   <div class="hero-block">$10 INSTANT ANALOG PRINTS — ZERO SETUP FOR YOU</div>
 
   <p class="hero-text">
     Retro-future analog photography for events, festivals, and tourism spaces. Physical keepsakes guests actually keep — delivered through a minimal, frictionless setup that runs itself.
   </p>
-</header>
+</div>
 
 <section>
   <div class="section-title">Why Analog Works</div>
