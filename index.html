@@ -1,101 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Future.Nostalgia — Analog Photos for a Retro-Future World</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Future.Nostalgia — Instant Analog Photography</title>
 
-  <meta name="description" content="Future.Nostalgia brings retro-future instant analog photography to events, festivals, and tourism experiences. $10 instant prints. Minimal setup. High emotional impact." />
+  <meta name="description" content="Future.Nostalgia brings retro-future instant analog prints to events, festivals, and tourism experiences. Physical keepsakes, minimal setup, $10 per print.">
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+    /* BRAND COLORS */
+    :root {
+      --black: #0B0B0C;
+      --cream: #F7EEDA;
+      --cyan: #2FF3E0;
+      --red: #E63946;
+      --blue: #4A7AFF;
+    }
+
     body {
       margin: 0;
+      background: var(--cream);
+      color: var(--black);
       font-family: "Source Serif Pro", serif;
-      background: #F7EEDA;
-      color: #0B0B0C;
       line-height: 1.6;
     }
 
+    /* HEADER / HERO */
     header {
-      padding: 4rem 1.5rem;
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
+      padding: 4rem 1.5rem 5rem;
       position: relative;
     }
 
-    header h1 {
+    h1 {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 600;
-      line-height: 1.1;
+      margin: 0;
       letter-spacing: -1px;
-      color: #0B0B0C;
+      line-height: 1.05;
     }
 
-    .tagline {
-      font-size: 1.3rem;
-      max-width: 600px;
-      margin-top: 1rem;
-      font-family: "Space Grotesk", sans-serif;
-    }
-
-    .cyan-block {
-      background: #2FF3E0;
-      padding: 0.5rem 1rem;
+    .hero-block {
+      background: var(--cyan);
       display: inline-block;
-      margin: 1.5rem 0;
+      padding: 0.4rem 1rem;
       font-family: "Space Grotesk", sans-serif;
       font-weight: 600;
+      margin: 1.5rem 0;
+      transform: rotate(-1deg);
     }
 
+    .hero-text {
+      max-width: 600px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.35rem;
+    }
+
+    /* MAIN SECTIONS */
     section {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 4rem auto;
       padding: 0 1.5rem;
     }
 
     .section-title {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 600;
       margin-bottom: 1rem;
     }
 
-    .value-block {
-      margin-bottom: 2.5rem;
-    }
-
-    .cutout {
-      background: #0B0B0C;
-      color: #F7EEDA;
-      padding: 0.5rem;
+    .cutout-label {
+      background: var(--black);
+      color: var(--cream);
+      padding: 0.4rem 0.8rem;
       display: inline-block;
-      transform: rotate(-1deg);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1rem;
-    }
-
-    .cta a {
-      background: #0B0B0C;
-      color: #2FF3E0;
-      padding: 0.9rem 1.4rem;
-      text-decoration: none;
       font-family: "Space Grotesk", sans-serif;
       font-weight: 600;
+      transform: rotate(-1.5deg);
+      margin-bottom: 0.6rem;
+    }
+
+    .value-block {
+      margin: 2.5rem 0;
+    }
+
+    /* CTA BUTTON */
+    .cta-container {
+      margin-top: 3rem;
+    }
+
+    .cta-button {
+      background: var(--black);
+      color: var(--cyan);
+      padding: 1rem 1.6rem;
+      text-decoration: none;
+      font-family: "Space Grotesk", sans-serif;
       font-size: 1.2rem;
-      border: 2px solid #0B0B0C;
+      font-weight: 600;
+      border: 2px solid var(--black);
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .cta-button:hover {
+      background: var(--cyan);
+      color: var(--black);
     }
 
     footer {
-      text-align: left;
-      padding: 3rem 1.5rem;
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
+      padding: 4rem 1.5rem 3rem;
+      font-family: "Space Grotesk", sans-serif;
       font-size: 0.9rem;
       opacity: 0.7;
-      font-family: "Space Grotesk", sans-serif;
     }
   </style>
 </head>
@@ -103,47 +126,55 @@
 <body>
 
 <header>
-  <h1>Future.Nostalgia</h1>
-  <div class="tagline">Instant analog photographs in a retro-future aesthetic — tangible memories in a world that forgets fast.</div>
-  <div class="cyan-block">$10 instant prints — Zero setup for you</div>
+  <h1>FUTURE.<br>NOSTALGIA</h1>
+
+  <div class="hero-block">$10 INSTANT ANALOG PRINTS — ZERO SETUP FOR YOU</div>
+
+  <p class="hero-text">
+    Retro-future analog photography for events, festivals, and tourism spaces. Physical keepsakes guests actually keep — delivered through a minimal, frictionless setup that runs itself.
+  </p>
 </header>
 
 <section>
-  <div class="section-title">Why Analog Still Wins</div>
-
-  <p class="cutout">Physical artifacts outlast digital feeds.</p>
-
-  <p>Instant prints create emotional resonance that smartphones can’t replicate. Guests slow down, pose, wait — and that tiny pause turns a moment into a memory. Tourism destinations, festivals, and events use Future.Nostalgia because physical keepsakes make their experience stick.</p>
-</section>
-
-<section>
-  <div class="section-title">What You Get</div>
+  <div class="section-title">Why Analog Works</div>
 
   <div class="value-block">
-    <strong class="cutout">Minimal footprint</strong>
-    <p>A compact, modern analog station designed to blend into your space — not dominate it.</p>
+    <div class="cutout-label">Physical artifacts last</div>
+    <p>Digital photos vanish into feeds. Instant prints turn moments into objects. Guests leave with something they can hold, show, and remember — tied directly to your venue.</p>
   </div>
 
   <div class="value-block">
-    <strong class="cutout">We handle everything</strong>
-    <p>All payments, guest flow, and photography management are on us. You just provide a spot.</p>
-  </div>
-
-  <div class="value-block">
-    <strong class="cutout">Instant keepsakes</strong>
-    <p>$10 prints delivered within seconds. Real film texture. Real nostalgia.</p>
+    <div class="cutout-label">Nostalgia with a modern edge</div>
+    <p>The aesthetic blends film-era charm with sharp retro-futurist design. It feels intentional, distinctive, and unlike anything guests can produce on their phones.</p>
   </div>
 </section>
 
 <section>
-  <div class="section-title">Perfect For</div>
-  <p>Festivals — Tourism attractions — Markets — Hotels — Conferences — Art events — Pop-ups — Nightlife spaces</p>
+  <div class="section-title">What Future.Nostalgia Brings</div>
+
+  <div class="value-block">
+    <div class="cutout-label">Minimal footprint</div>
+    <p>A compact analog station designed to integrate into your environment — not overwhelm it.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="cutout-label">We handle everything</div>
+    <p>You provide space. We run the entire workflow: photography, payments, guest flow, and production.</p>
+  </div>
+
+  <div class="value-block">
+    <div class="cutout-label">Instant keepsakes</div>
+    <p>Real film-like texture. Real borders. Real analog charm. Delivered within seconds.</p>
+  </div>
 </section>
 
-<section class="cta">
-  <div class="section-title">Book Future.Nostalgia</div>
-  <p>Bring the retro-future analog experience to your venue.</p>
-  <a href="mailto:future.nostalgia.photos@gmail.com">Contact Us</a>
+<section>
+  <div class="section-title">Ideal For</div>
+  <p>Festivals · Tourism attractions · Markets · Hotels · Conferences · Art events · Pop-ups · Nightlife venues</p>
+
+  <div class="cta-container">
+    <a class="cta-button" href="mailto:future.nostalgia.photos@gmail.com">Book Future.Nostalgia</a>
+  </div>
 </section>
 
 <footer>
