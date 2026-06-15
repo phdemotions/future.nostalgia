@@ -11,7 +11,7 @@ Static site (no build step). Hand-written HTML/CSS/JS so it deploys instantly an
 | `index.html` | The landing page |
 | `styles.css` | All styling + design tokens (CSS variables at top) |
 | `main.js` | Scroll reveals, hero animation, form submit |
-| `favicon.svg` · `og-image.svg` | Brand marks |
+| `assets/brand/` | Real logo: wordmark (black + cream), `f.n` icon (favicon/app), OG image |
 | `404.html` | On-brand not-found page |
 | `robots.txt` · `sitemap.xml` | SEO |
 
