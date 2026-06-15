@@ -90,7 +90,7 @@
         }
       })
       .catch(function () {
-        setStatus("Something went wrong. Email futurenostalgiacreative@gmail.com and we'll sort it.", true);
+        setStatus("Something went wrong. Email hello@futurenostalgia.ca and I'll sort it.", true);
       })
       .finally(function () {
         submitBtn.classList.remove("is-loading");

@@ -1,6 +1,6 @@
 # future.nostalgia
 
-Lead-magnet landing page for **future.nostalgia** — $10 instant analog prints, turnkey for events and venues.
+Lead-magnet landing page for **future.nostalgia** — instant analog prints, turnkey for events and venues.
 
 Static site (no build step). Hand-written HTML/CSS/JS so it deploys instantly and has nothing to maintain. Hosted on **Cloudflare Pages**, DNS on **Cloudflare**, domain registered at **NamesPro.ca**, email via **Cloudflare Email Routing → Gmail** (and Gmail "send mail as" for outbound). Zoho is being removed.
 
