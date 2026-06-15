@@ -2,7 +2,7 @@
 
 Lead-magnet landing page for **future.nostalgia** — $10 instant analog prints, turnkey for events and venues.
 
-Static site (no build step). Hand-written HTML/CSS/JS so it deploys instantly and has nothing to maintain. Hosted on **Cloudflare Pages**, DNS on **Cloudflare**, domain registered at **NamesPro.ca**, email on **Zoho**.
+Static site (no build step). Hand-written HTML/CSS/JS so it deploys instantly and has nothing to maintain. Hosted on **Cloudflare Pages**, DNS on **Cloudflare**, domain registered at **NamesPro.ca**, email via **Cloudflare Email Routing → Gmail** (and Gmail "send mail as" for outbound). Zoho is being removed.
 
 ## Files
 
@@ -72,5 +72,19 @@ See the project handoff notes for the full step-by-step. Summary:
 - **Cloudflare DNS:** the apex + `www` records are managed automatically once the domain is added
   as a custom domain in Pages. Delete the stale records pointing at the old DigitalOcean droplet
   (`143.110.209.156` A record, the matching AAAA, and the dead `www → *.tempurl.host` CNAME).
-- **DO NOT TOUCH the Zoho `MX` records** (`mx.zoho.com`, `mx2`, `mx3`) or any `TXT` SPF/DKIM/DMARC
-  records — those keep email working.
+## 5. Email — Cloudflare Email Routing + Gmail (no Zoho)
+
+Custom-domain mail on Google + Cloudflare only, free path:
+
+- **Receive:** Cloudflare → **Email** (Email Routing) → enable. Let it auto-add its `MX` +
+  SPF (`v=spf1 include:_spf.mx.cloudflare.net ~all`). **Delete the old Zoho `MX`**
+  (`mx.zoho.com`, `mx2`, `mx3`) — never run two mail providers' MX at once. Add
+  `futurenostalgiacreative@gmail.com` as a verified destination, then route
+  `hello@futurenostalgia.ca` (and/or a catch-all) to it.
+- **Send as the domain:** Gmail → Settings → Accounts → **Send mail as** → add
+  `hello@futurenostalgia.ca` via `smtp.gmail.com:587` with a Google **App Password**
+  (account has 2FA). The verification code arrives in Gmail via the routing forward.
+- **DMARC:** add `TXT _dmarc` = `v=DMARC1; p=none; rua=mailto:futurenostalgiacreative@gmail.com`.
+  Stays at `p=none` — Gmail send-as isn't DKIM-aligned to this domain (that needs Google
+  Workspace), so a stricter policy would filter your own mail.
+- Deliver Web3Forms leads straight to `futurenostalgiacreative@gmail.com` (one less hop).
