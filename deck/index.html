@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- SEO: the deck lives on the domain; it should represent when shared or crawled. -->
+  <title>future.nostalgia — Analog Photo Booth for Events &amp; Festivals</title>
+  <meta name="description" content="An analog instant-print booth for festivals, hotels, and events. Run start to finish — paid per print or covered by a sponsor — with your event on every photo your guests take home. Your staff never touches it." />
+  <link rel="canonical" href="https://futurenostalgia.ca/deck/" />
+  <meta name="keywords" content="analog photo booth, instant print booth, festival photo booth rental, event keepsake, Polaroid booth, Ontario event photo booth" />
+  <meta name="theme-color" content="#F4F1EA" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://futurenostalgia.ca/deck/" />
+  <meta property="og:title" content="future.nostalgia — Analog Photo Booth for Events" />
+  <meta property="og:description" content="Run start to finish, paid per print or by a sponsor, with your event on every photo your guests take home." />
+  <meta property="og:image" content="https://futurenostalgia.ca/assets/brand/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="future.nostalgia — Analog Photo Booth for Events" />
+  <meta name="twitter:description" content="An analog instant-print booth that runs itself and sends your event home with every guest." />
+  <meta name="twitter:image" content="https://futurenostalgia.ca/assets/brand/og.png" />
+
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/icon-512.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "future.nostalgia — Analog Photo Booth",
+    "serviceType": "Analog instant-print photo booth for events",
+    "url": "https://futurenostalgia.ca/deck/",
+    "areaServed": "CA",
+    "description": "An analog instant-print booth for festivals, hotels, tourism spots, and events. Run start to finish; paid per print by guests or underwritten by a sponsor; the venue's staff never operates it; every print carries the venue's name.",
+    "provider": { "@type": "Person", "name": "Josh Gonzales" }
+  }
+  </script>
+
+  <style>
+  /* ════════════════════════════════════════════════════════════════════════════
+     future.nostalgia — Venue Deck (6 slides, photo + diagram forward)
+     Functionalist-Nostalgia register (Dieter Rams), ported from developer/elora:
+       oatmeal paper · ONE Gorge-Teal accent · 1px hairlines · 0 radius · 0 elevation
+       Jost (display + numerals only) + Inter (text). Serif wordmark = the brand logo.
+       Coral ember = one spark per slide, no more. Colors = shipped Elora light Palette.
+     ════════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --canvas:#F4F1EA; --paper-card:#FBF8F1;
+    --ink:#2D2D2A; --ink-muted:#5A5A55; --ink-faint:#9A988F;
+    --hairline:#D1D1CE; --hairline-strong:#C5C2B6;
+    --accent:#2B5B5D; --on-accent:#F4F1EA;
+    --accent-wash:rgba(43,91,93,0.06); --accent-band:rgba(43,91,93,0.10); --accent-border-soft:rgba(43,91,93,0.50);
+    --photo-placeholder:#CDD4CE; --ember:#FF5A36;
+
+    --font-display:'Jost',system-ui,sans-serif;
+    --font-text:'Inter',system-ui,sans-serif;
+
+    --s-micro:4px; --s-xs:8px; --s-gap:10px; --s-sm:12px; --s-md:16px;
+    --s-section:18px; --s-lg:24px; --s-xl:32px; --s-xxl:40px; --s-huge:64px;
+    --border:1px; --border-active:2px;
+    --dur:120ms; --ease:cubic-bezier(0.22,1,0.36,1);
+  }
+
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; height:100%; }
+  body { background:var(--ink); color:var(--ink); font-family:var(--font-text); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow:hidden; }
+
+  .stage-wrap { position:fixed; inset:0; display:grid; place-items:center; }
+  .stage { position:relative; width:1280px; height:720px; background:var(--canvas); overflow:hidden; transform-origin:center center; }
+
+  .slide { position:absolute; inset:0; display:flex; flex-direction:column; padding:60px 84px 52px; opacity:0; visibility:hidden; pointer-events:none; }
+  .slide.is-active { opacity:1; visibility:visible; pointer-events:auto; }
+  .slide__body { flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0; }
+
+  /* Brand wordmark (the real serif logo). multiply drops any white box onto the oatmeal. */
+  .wordmark { display:block; mix-blend-mode:multiply; }
+  .wordmark--cover { height:46px; width:auto; margin-bottom:22px; }
+  .wordmark--foot { height:17px; width:auto; opacity:0.78; }
+
+  .kicker { display:flex; flex-direction:column; gap:12px; margin-bottom:var(--s-lg); }
+  .rule { width:44px; height:var(--border-active); background:var(--accent); }
+  .eyebrow { font-size:13px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); }
+
+  .slide__foot { display:flex; align-items:center; justify-content:space-between; padding-top:var(--s-sm); border-top:var(--border) solid var(--hairline); }
+  .foot__num { font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--ink-muted); font-variant-numeric:tabular-nums; }
+  .foot__num b { color:var(--accent); }
+
+  /* Type — Jost for display only; Inter for text. */
+  .t-display { font-family:var(--font-display); font-weight:700; font-size:74px; line-height:0.98; letter-spacing:-1.4px; color:var(--ink); margin:0; max-width:14ch; }
+  .t-title { font-family:var(--font-display); font-weight:700; font-size:46px; line-height:1.05; letter-spacing:-0.7px; color:var(--ink); margin:0; max-width:20ch; }
+  .t-statement { font-family:var(--font-display); font-weight:600; font-size:58px; line-height:1.06; letter-spacing:-0.8px; color:var(--ink); margin:0; max-width:15ch; }
+  .lead { font-size:20px; line-height:1.5; color:var(--ink-muted); margin:0; max-width:46ch; }
+  .body { font-size:18px; line-height:1.55; color:var(--ink-muted); margin:0; max-width:42ch; }
+  .small { font-size:14px; line-height:1.45; color:var(--ink-muted); margin:0; }
+  .ink { color:var(--ink); } .em { color:var(--ember); font-style:normal; } .teal { color:var(--accent); }
+
+  /* Two-column split used by cover / idea / context. */
+  .split { display:grid; grid-template-columns:1.25fr 1fr; gap:var(--s-huge); align-items:center; flex:1; }
+  .split--photoLeft { grid-template-columns:1fr 1.25fr; }
+  .cover__meta { display:flex; gap:var(--s-md); flex-wrap:wrap; margin-top:var(--s-lg); }
+  .cover__meta span { font-size:13px; letter-spacing:0.3px; color:var(--ink-muted); }
+  .cover__meta span + span { padding-left:var(--s-md); border-left:var(--border) solid var(--hairline); }
+
+  /* ── Featured photo zone (intentional swap-slot, not an unfinished gap) ───────── */
+  .photo { position:relative; width:100%; background:var(--photo-placeholder); border:var(--border) solid var(--hairline-strong);
+    display:flex; align-items:center; justify-content:center; }
+  .photo--wide { aspect-ratio:4/3; }
+  .photo__slot { text-align:center; }
+  .photo__slot .lab { display:block; font-family:var(--font-text); font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:var(--ink-faint); }
+  .photo__slot .sub { display:block; font-size:11px; color:var(--ink-faint); margin-top:4px; }
+  .photo__tick { position:absolute; top:10px; left:10px; width:14px; height:14px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+  .photo__cap { position:absolute; left:0; right:0; bottom:-26px; font-size:12px; color:var(--ink-muted); }
+
+  /* Instant-print frame (Polaroid mat, zero elevation) — cover hero + contact sheet. */
+  .print { background:var(--paper-card); border:var(--border) solid var(--hairline-strong); padding:13px 13px 40px; position:relative; }
+  .print--hero { width:340px; }
+  .print__photo { aspect-ratio:3/2; width:100%; background:var(--photo-placeholder);
+    /* SWAP: real booth shot → background-image:url('/assets/booth/xxx.jpg'); background-size:cover; */
+    display:flex; align-items:flex-end; padding:10px; }
+  .print__tag { font-size:10px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; color:var(--accent); background:var(--canvas); padding:3px 7px; border:var(--border) solid var(--accent-border-soft); }
+  .print__cap { position:absolute; left:13px; right:13px; bottom:13px; display:flex; align-items:center; justify-content:space-between; }
+  .print__cap span { font-size:12px; color:var(--ink-muted); }
+  .print__reg { width:10px; height:10px; border:1.5px solid var(--accent-border-soft); border-radius:999px; }
+
+  /* Contact-sheet grid (slide 5 photo feature) */
+  .contact { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--s-md); margin-top:var(--s-lg); }
+  .contact .print { padding:9px 9px 30px; }
+  .contact .print__cap { left:9px; right:9px; bottom:9px; }
+  .contact .print__cap span { font-size:10.5px; }
+
+  /* ── Process diagram (slide 3) — Functionalist line-art, no photo needed ──────── */
+  .diagram { width:100%; margin-top:var(--s-lg); }
+  .dg-box { fill:none; stroke:var(--hairline-strong); stroke-width:1.5; }
+  .dg-ink { fill:none; stroke:var(--accent); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+  .dg-ember { fill:none; stroke:var(--ember); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+  .dg-conn { fill:none; stroke:var(--ink-faint); stroke-width:1.5; }
+  .dg-head { fill:var(--ink-faint); }
+  .dg-lab { font-family:var(--font-text); font-size:13px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; fill:var(--ink); }
+  .dg-sub { font-family:var(--font-text); font-size:12.5px; fill:var(--ink-muted); }
+
+  /* Plain claim rows (slide 4) — no cards, hairline-divided */
+  /* Slide 4 — what the booth costs the venue (nothing) and the two ways it's covered.
+     One calm idea: a confident answer + two evenly-weighted panels split by one hairline.
+     The recurring accent-rule motif carries the lone ember (the sponsored panel). */
+  .cost-lead { font-size:19px; line-height:1.5; color:var(--ink-muted); margin:24px 0 0; max-width:46ch; }
+  .models { display:grid; grid-template-columns:1fr 1fr; margin-top:48px; }
+  .model { padding-right:56px; }
+  .model + .model { padding-left:56px; border-left:var(--border) solid var(--hairline); }
+  .model__rule { width:36px; height:var(--border-active); background:var(--accent); margin-bottom:18px; }
+  .model--sponsored .model__rule { background:var(--ember); }
+  .model__name { font-weight:600; font-size:25px; letter-spacing:-0.3px; color:var(--ink); margin:0 0 10px; }
+  .model p { font-size:16px; line-height:1.55; color:var(--ink-muted); margin:0; max-width:33ch; }
+  .model__note { font-size:14px; color:var(--ink-muted); margin-top:40px; }
+
+  /* CTA + end context */
+  .cta__contacts { display:flex; margin-top:var(--s-lg); }
+  .cta__contacts a { font-weight:500; font-size:16px; color:var(--ink); text-decoration:none; padding:0 var(--s-lg); border-left:var(--border) solid var(--hairline); }
+  .cta__contacts a:first-child { padding-left:0; border-left:0; }
+  .cta__contacts a:hover { color:var(--accent); }
+  .arrow { color:var(--ember); font-weight:700; }
+  .context { display:flex; align-items:center; gap:var(--s-lg); margin-top:var(--s-xl); padding-top:var(--s-lg); border-top:var(--border) solid var(--hairline); }
+  .context img { width:104px; height:auto; transform:rotate(-3deg); flex-shrink:0; }
+  .context p { font-size:14px; line-height:1.55; color:var(--ink-muted); margin:0; max-width:62ch; }
+  .context p b { color:var(--ink); font-weight:600; }
+
+  /* Reveal */
+  .slide.is-active .reveal { animation:rise 460ms var(--ease) backwards; animation-delay:calc(var(--i,0)*70ms); }
+  @keyframes rise { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+  .progress { position:fixed; top:0; left:0; height:3px; background:var(--accent); z-index:30; transition:width var(--dur) var(--ease); }
+  .nav { position:fixed; bottom:18px; right:22px; display:flex; gap:var(--s-xs); z-index:30; }
+  .nav button { font-weight:600; font-size:13px; width:38px; height:38px; cursor:pointer; background:var(--canvas); color:var(--ink); border:var(--border) solid var(--hairline-strong); border-radius:0; display:inline-flex; align-items:center; justify-content:center; transition:border-color var(--dur) var(--ease), color var(--dur) var(--ease); }
+  .nav button:hover { border-color:var(--accent); color:var(--accent); }
+  .nav button:disabled { opacity:0.4; cursor:not-allowed; }
+  /* Visible keyboard focus (WCAG 2.4.7) — the elora accent ring. */
+  :where(a, button):focus-visible { outline:var(--border-active) solid var(--accent); outline-offset:3px; }
+  .hint { position:fixed; bottom:22px; left:22px; z-index:30; font-size:12px; color:rgba(244,241,234,0.75); letter-spacing:0.3px; }
+  .hint kbd { font-family:var(--font-display); font-weight:600; color:rgba(244,241,234,0.95); border:1px solid rgba(244,241,234,0.4); border-radius:0; padding:1px 5px; font-size:11px; }
+
+  @media (prefers-reduced-motion:reduce) { .slide.is-active .reveal { animation:none; } .progress { transition:none; } }
+
+  @media print {
+    @page { size:1280px 720px; margin:0; }
+    body { background:#fff; overflow:visible; }
+    .stage-wrap { position:static; display:block; }
+    .stage { transform:none !important; width:1280px; height:720px; }
+    .slide { position:relative; opacity:1 !important; visibility:visible !important; page-break-after:always; break-after:page; }
+    .reveal { animation:none !important; opacity:1 !important; transform:none !important; }
+    .progress,.nav,.hint { display:none !important; }
+  }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" style="width:0%"></div>
+
+  <div class="stage-wrap">
+    <div class="stage" id="stage">
+
+      <!-- ─────────────── 01 · COVER ─────────────── -->
+      <section class="slide is-active" aria-label="Cover">
+        <div class="slide__body split">
+          <div>
+            <img class="wordmark wordmark--cover reveal" style="--i:0" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+            <span class="eyebrow reveal" style="--i:0; display:block; margin-bottom:22px">Analog photo booth for events</span>
+            <h1 class="t-display reveal" style="--i:1">Photos your guests actually keep.</h1>
+            <p class="lead reveal" style="--i:2; margin-top:24px">I bring an analog print booth to your event and run the whole night. Every guest walks out with a real photograph in their hand.</p>
+            <div class="cover__meta reveal" style="--i:3">
+              <span>futurenostalgia.ca</span>
+              <span>Festivals, hotels &amp; events</span>
+            </div>
+          </div>
+          <div class="reveal" style="--i:3; justify-self:center">
+            <figure class="print print--hero">
+              <div class="print__photo"><span class="print__tag">Your event, here</span></div>
+              <figcaption class="print__cap"><span>Harbourfront · 11:48pm</span><span class="print__reg" aria-hidden="true"></span></figcaption>
+            </figure>
+          </div>
+        </div>
+        <footer class="slide__foot">
+          <img class="wordmark wordmark--foot" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+          <span class="foot__num"><b>01</b> / 06</span>
+        </footer>
+      </section>
+
+      <!-- ─────────────── 02 · WHY PRINTS (the idea) ─────────────── -->
+      <section class="slide" aria-label="Why prints">
+        <div class="slide__body split split--photoLeft">
+          <div class="reveal" style="--i:2">
+            <div class="photo photo--wide">
+              <span class="photo__tick" aria-hidden="true"></span>
+              <span class="photo__slot"><span class="lab">Add a photo</span><span class="sub">a guest holding their print</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="kicker reveal" style="--i:0">
+              <span class="rule"></span>
+              <span class="eyebrow">Why prints</span>
+            </div>
+            <h2 class="t-statement reveal" style="--i:1">We don't remember files. We remember <span class="em">objects.</span></h2>
+            <p class="body reveal" style="--i:2; margin-top:24px">Your guests will shoot a hundred photos tonight and never open them again. The one they can hold, they keep for years. A print is a memory with a body.</p>
+          </div>
+        </div>
+        <footer class="slide__foot">
+          <img class="wordmark wordmark--foot" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+          <span class="foot__num"><b>02</b> / 06</span>
+        </footer>
+      </section>
+
+      <!-- ─────────────── 03 · HOW IT WORKS (diagram) ─────────────── -->
+      <section class="slide" aria-label="How it works">
+        <div class="slide__body">
+          <div class="kicker reveal" style="--i:0">
+            <span class="rule"></span>
+            <span class="eyebrow">How it works</span>
+          </div>
+          <h2 class="t-title reveal" style="--i:1">I run the whole booth.</h2>
+
+          <svg class="diagram reveal" style="--i:2" viewBox="0 0 1112 198" role="img" aria-label="You give a corner; I shoot the photo; it prints on the spot; the guest keeps it.">
+            <defs>
+              <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" class="dg-head"/></marker>
+            </defs>
+            <!-- node 1 · your corner -->
+            <rect x="8" y="20" width="104" height="104" class="dg-box"/>
+            <path d="M40,52 L40,92 L80,92" class="dg-ink"/>
+            <text x="8" y="160" class="dg-lab">Your corner</text>
+            <text x="8" y="182" class="dg-sub">a few sq. ft. + power</text>
+            <!-- conn -->
+            <line x1="128" y1="72" x2="252" y2="72" class="dg-conn" marker-end="url(#ah)"/>
+            <!-- node 2 · I shoot -->
+            <rect x="268" y="20" width="104" height="104" class="dg-box"/>
+            <rect x="296" y="58" width="48" height="34" class="dg-ink"/>
+            <circle cx="320" cy="75" r="9" class="dg-ink"/>
+            <path d="M305,58 L309,50 L331,50 L335,58" class="dg-ink"/>
+            <text x="268" y="160" class="dg-lab">I shoot it</text>
+            <text x="268" y="182" class="dg-sub">camera + lighting, all mine</text>
+            <!-- conn -->
+            <line x1="388" y1="72" x2="512" y2="72" class="dg-conn" marker-end="url(#ah)"/>
+            <!-- node 3 · prints on the spot -->
+            <rect x="528" y="20" width="104" height="104" class="dg-box"/>
+            <rect x="556" y="74" width="48" height="30" class="dg-ink"/>
+            <line x1="556" y1="64" x2="604" y2="64" class="dg-ink"/>
+            <rect x="566" y="40" width="28" height="22" class="dg-ink"/>
+            <text x="528" y="160" class="dg-lab">Prints on the spot</text>
+            <text x="528" y="182" class="dg-sub">real film, about a minute</text>
+            <!-- conn -->
+            <line x1="648" y1="72" x2="772" y2="72" class="dg-conn" marker-end="url(#ah)"/>
+            <!-- node 4 · they keep it (ember) -->
+            <rect x="788" y="20" width="104" height="104" class="dg-box"/>
+            <g transform="rotate(-8 840 72)">
+              <rect x="816" y="44" width="48" height="56" class="dg-ember"/>
+              <line x1="816" y1="86" x2="864" y2="86" class="dg-ember"/>
+            </g>
+            <text x="788" y="160" class="dg-lab">They keep it</text>
+            <text x="788" y="182" class="dg-sub">your event on the border</text>
+            <!-- closing note -->
+            <text x="940" y="68" class="dg-sub" style="font-size:13px">Your staff</text>
+            <text x="940" y="86" class="dg-sub" style="font-size:13px">never touches</text>
+            <text x="940" y="104" class="dg-sub" style="font-size:13px">any of it.</text>
+          </svg>
+
+          <p class="body reveal" style="--i:3; margin-top:24px; max-width:60ch">You give me a corner with power. I bring everything else and pack it all down at the end.</p>
+        </div>
+        <footer class="slide__foot">
+          <img class="wordmark wordmark--foot" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+          <span class="foot__num"><b>03</b> / 06</span>
+        </footer>
+      </section>
+
+      <!-- ─────────────── 04 · WHY VENUES SAY YES ─────────────── -->
+      <section class="slide" aria-label="What it costs you">
+        <div class="slide__body">
+          <div class="kicker reveal" style="--i:0">
+            <span class="rule"></span>
+            <span class="eyebrow">What it costs you</span>
+          </div>
+          <h2 class="t-display reveal" style="--i:1; font-size:92px">Nothing.</h2>
+          <p class="cost-lead reveal" style="--i:2">Your guests or a sponsor cover the prints. There are two ways to run it.</p>
+          <div class="models">
+            <div class="model reveal" style="--i:3">
+              <div class="model__rule"></div>
+              <h3 class="model__name">Per print</h3>
+              <p>Guests pay for their own prints on the spot, the way they'd buy anything else at your event.</p>
+            </div>
+            <div class="model model--sponsored reveal" style="--i:4">
+              <div class="model__rule"></div>
+              <h3 class="model__name">Sponsored</h3>
+              <p>A sponsor covers a set number, so guests take them home free, with the sponsor's name on every print.</p>
+            </div>
+          </div>
+          <p class="model__note reveal" style="--i:5">I'll help you pick the one that fits your event.</p>
+        </div>
+        <footer class="slide__foot">
+          <img class="wordmark wordmark--foot" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+          <span class="foot__num"><b>04</b> / 06</span>
+        </footer>
+      </section>
+
+      <!-- ─────────────── 05 · WHAT THEY TAKE HOME (photo feature) ─────────────── -->
+      <section class="slide" aria-label="What they take home">
+        <div class="slide__body">
+          <div class="kicker reveal" style="--i:0">
+            <span class="rule"></span>
+            <span class="eyebrow">What they take home</span>
+          </div>
+          <h2 class="t-title reveal" style="--i:1">A real print. Your event on the border.</h2>
+          <div class="contact">
+            <figure class="print reveal" style="--i:2">
+              <div class="print__photo"><span class="print__tag">Your event</span></div>
+              <figcaption class="print__cap"><span>Front row · 9:42pm</span><span class="print__reg" aria-hidden="true"></span></figcaption>
+            </figure>
+            <figure class="print reveal" style="--i:3">
+              <div class="print__photo"></div>
+              <figcaption class="print__cap"><span>The line, all night</span></figcaption>
+            </figure>
+            <figure class="print reveal" style="--i:4">
+              <div class="print__photo"></div>
+              <figcaption class="print__cap"><span>Two strangers, now friends</span></figcaption>
+            </figure>
+            <figure class="print reveal" style="--i:5">
+              <div class="print__photo"><span class="print__tag">Your event</span></div>
+              <figcaption class="print__cap"><span>Last dance · 1:10am</span><span class="print__reg" aria-hidden="true"></span></figcaption>
+            </figure>
+          </div>
+          <p class="small reveal" style="--i:6; margin-top:32px">Swap these for shots from your room, your crowd, your night.</p>
+        </div>
+        <footer class="slide__foot">
+          <img class="wordmark wordmark--foot" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+          <span class="foot__num"><b>05</b> / 06</span>
+        </footer>
+      </section>
+
+      <!-- ─────────────── 06 · LET'S TALK + context at the end ─────────────── -->
+      <section class="slide" aria-label="Let's talk">
+        <div class="slide__body">
+          <div class="kicker reveal" style="--i:0">
+            <span class="rule"></span>
+            <span class="eyebrow">Let's talk</span>
+          </div>
+          <h2 class="t-display reveal" style="--i:1; font-size:64px; max-width:18ch">Give me a corner. I'll handle the rest. <span class="arrow">→</span></h2>
+          <p class="lead reveal" style="--i:2; margin-top:24px; max-width:54ch">Tell me about your event and I'll come back within a day with dates and a price. No deposit to ask.</p>
+          <nav class="cta__contacts reveal" style="--i:3" aria-label="Contact">
+            <a href="mailto:hello@futurenostalgia.ca">hello@futurenostalgia.ca</a>
+            <a href="https://futurenostalgia.ca">futurenostalgia.ca</a>
+            <a href="https://instagram.com/future.nostalgia">@future.nostalgia</a>
+          </nav>
+          <div class="context reveal" style="--i:4">
+            <img src="/assets/brand/about-family.png" alt="A print of Josh Gonzales and his family" width="900" height="717" />
+            <p><b>I'm Josh Gonzales.</b> I started future.nostalgia for my own family, because the photos we keep are the ones we can hold. A share of every event goes to brain research — the science of why a photograph is worth keeping at all.</p>
+          </div>
+        </div>
+        <footer class="slide__foot">
+          <img class="wordmark wordmark--foot" src="/assets/brand/wordmark-black.png" alt="future.nostalgia" width="1000" height="223" />
+          <span class="foot__num"><b>06</b> / 06</span>
+        </footer>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="hint"><kbd>←</kbd> <kbd>→</kbd> to move · <kbd>F</kbd> fullscreen · <kbd>P</kbd> to print/PDF</div>
+  <div class="nav">
+    <button id="prev" aria-label="Previous slide">←</button>
+    <button id="next" aria-label="Next slide">→</button>
+  </div>
+
+  <script>
+  (function () {
+    var stage = document.getElementById('stage');
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var progress = document.getElementById('progress');
+    var prevBtn = document.getElementById('prev');
+    var nextBtn = document.getElementById('next');
+    var i = 0;
+
+    function fit() { stage.style.transform = 'scale(' + (Math.min(window.innerWidth / 1280, window.innerHeight / 720) * 0.94) + ')'; }
+
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function (s, idx) { s.classList.remove('is-active'); if (idx === i) { void s.offsetWidth; s.classList.add('is-active'); } });
+      progress.style.width = ((i + 1) / slides.length * 100) + '%';
+      prevBtn.disabled = (i === 0);
+      nextBtn.disabled = (i === slides.length - 1);
+      if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+    }
+    function next() { show(i + 1); }
+    function prev() { show(i - 1); }
+
+    document.addEventListener('keydown', function (e) {
+      switch (e.key) {
+        case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': e.preventDefault(); next(); break;
+        case 'ArrowLeft': case 'ArrowUp': case 'PageUp': e.preventDefault(); prev(); break;
+        case 'Home': e.preventDefault(); show(0); break;
+        case 'End': e.preventDefault(); show(slides.length - 1); break;
+        case 'f': case 'F': document.fullscreenElement ? document.exitFullscreen() : (document.documentElement.requestFullscreen && document.documentElement.requestFullscreen()); break;
+        case 'p': case 'P': e.preventDefault(); window.print(); break;
+      }
+    });
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    var x0 = null;
+    document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+      x0 = null;
+    }, { passive: true });
+
+    window.addEventListener('resize', fit);
+    fit();
+    var start = parseInt((location.hash || '').slice(1), 10);
+    show(isNaN(start) ? 0 : start - 1);
+  })();
+  </script>
+</body>
+</html>
