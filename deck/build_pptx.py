@@ -13,9 +13,9 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE, MSO_CONNECTOR
 from pptx.oxml.ns import qn
 
-CANVAS="F4F1EA"; PAPER="FBF8F1"; INK="2D2D2A"; INKM="5A5A55"; INKF="9A988F"
-HAIR="D1D1CE"; HAIRS="C5C2B6"; ACCENT="2B5B5D"; EMBER="FF5A36"; PHOTO="CDD4CE"
-JOST="Jost"; INTER="Inter"
+CANVAS="F7F5F0"; PAPER="FCFBF7"; INK="1A1714"; INKM="6E6A62"; INKF="9C978C"
+HAIR="E2DDD3"; HAIRS="D2CCBF"; ACCENT="1A1714"; EMBER="1A1714"; PHOTO="E4DFD5"
+JOST="Fraunces"; INTER="Inter"
 ASSET="/Users/josh/developer/futurenostalgia.ca/assets/brand"
 CENTER=PP_ALIGN.CENTER; RIGHTA=PP_ALIGN.RIGHT; LEFTA=PP_ALIGN.LEFT
 CURDY=0  # per-slide vertical shift for body content (footer excluded)
@@ -68,6 +68,7 @@ def txt(s, x, y, w, h, segs, size, color=INK, font=INTER, bold=False,
         r = p.add_run(); r.text = t.upper() if upper else t
         r.font.size = PTpx(o.get("size", size)); r.font.name = o.get("font", font)
         r.font.bold = o.get("bold", bold)
+        r.font.italic = o.get("italic", False)
         r.font.color.rgb = RGBColor.from_string(o.get("color", color))
         tr = o.get("track", track)
         if tr: set_track(r, tr)
@@ -107,6 +108,12 @@ def print_frame(s, x, y, w, photo_h, cap, tag=None, reg=True, mat_bottom=40, pad
     ph_w = w - 2*pad
     rect(s, x, y, w, pad+photo_h+mat_bottom, fill=PAPER, line=HAIRS, line_px=1)
     rect(s, x+pad, y+pad, ph_w, photo_h, fill=PHOTO)
+    # intentional placeholder: a faint analog-camera mark, not an empty box
+    cw = photo_h*0.44; ch = photo_h*0.30; cx = x+pad+ph_w/2; cy = y+pad+photo_h/2
+    rect(s, cx-cw/2, cy-ch/2, cw, ch, line=INKF, line_px=1.3)
+    lr = ch*0.34
+    rect(s, cx-lr, cy-lr+ch*0.05, lr*2, lr*2, line=INKF, line_px=1.3, shape=MSO_SHAPE.OVAL)
+    rect(s, cx-cw*0.15, cy-ch/2-ch*0.15, cw*0.3, ch*0.15, line=INKF, line_px=1.3)
     if tag:
         tw = len(tag)*6.8 + 18
         rect(s, x+pad+8, y+pad+photo_h-26, tw, 18, fill=CANVAS, line=ACCENT, line_px=1)
@@ -142,7 +149,7 @@ txt(s, PHX, cyc+2, PHW, 18, "a guest holding their print", 11, color=INKF, align
 RX = 600
 kicker(s, RX, 252, "Why prints")
 txt(s, RX, 300, 580, 200,
-    [("We don't remember files. We remember ", {}), ("objects.", {"color":EMBER})],
+    [("We don't remember files. We remember ", {}), ("objects.", {"italic":True})],
     58, font=JOST, bold=True, line=1.06, track=-0.8)
 txt(s, RX, 532, 470, 120,
     "Your guests will shoot a hundred photos tonight and never open them again. The one they can hold, they keep for years. A print is a memory with a body.",

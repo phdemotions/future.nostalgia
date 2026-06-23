@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/icon-512.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
@@ -49,14 +49,14 @@
      ════════════════════════════════════════════════════════════════════════════ */
 
   :root {
-    --canvas:#F4F1EA; --paper-card:#FBF8F1;
-    --ink:#2D2D2A; --ink-muted:#5A5A55; --ink-faint:#9A988F;
-    --hairline:#D1D1CE; --hairline-strong:#C5C2B6;
-    --accent:#2B5B5D; --on-accent:#F4F1EA;
-    --accent-wash:rgba(43,91,93,0.06); --accent-band:rgba(43,91,93,0.10); --accent-border-soft:rgba(43,91,93,0.50);
-    --photo-placeholder:#CDD4CE; --ember:#FF5A36;
+    --canvas:#F7F5F0; --paper-card:#FCFBF7;
+    --ink:#1A1714; --ink-muted:#6E6A62; --ink-faint:#9C978C;
+    --hairline:#E2DDD3; --hairline-strong:#D2CCBF;
+    --accent:#1A1714; --on-accent:#F7F5F0;
+    --accent-wash:rgba(26,23,20,0.05); --accent-band:rgba(26,23,20,0.08); --accent-border-soft:rgba(26,23,20,0.40);
+    --photo-placeholder:#E4DFD5; --ember:#1A1714;
 
-    --font-display:'Jost',system-ui,sans-serif;
+    --font-display:'Fraunces',Georgia,serif;
     --font-text:'Inter',system-ui,sans-serif;
 
     --s-micro:4px; --s-xs:8px; --s-gap:10px; --s-sm:12px; --s-md:16px;
@@ -96,7 +96,7 @@
   .lead { font-size:20px; line-height:1.5; color:var(--ink-muted); margin:0; max-width:46ch; }
   .body { font-size:18px; line-height:1.55; color:var(--ink-muted); margin:0; max-width:42ch; }
   .small { font-size:14px; line-height:1.45; color:var(--ink-muted); margin:0; }
-  .ink { color:var(--ink); } .em { color:var(--ember); font-style:normal; } .teal { color:var(--accent); }
+  .ink { color:var(--ink); } .em { font-style:italic; } .teal { color:var(--accent); }
 
   /* Two-column split used by cover / idea / context. */
   .split { display:grid; grid-template-columns:1.25fr 1fr; gap:var(--s-huge); align-items:center; flex:1; }
@@ -118,8 +118,10 @@
   /* Instant-print frame (Polaroid mat, zero elevation) — cover hero + contact sheet. */
   .print { background:var(--paper-card); border:var(--border) solid var(--hairline-strong); padding:13px 13px 40px; position:relative; }
   .print--hero { width:340px; }
-  .print__photo { aspect-ratio:3/2; width:100%; background:var(--photo-placeholder);
-    /* SWAP: real booth shot → background-image:url('/assets/booth/xxx.jpg'); background-size:cover; */
+  .print__photo { aspect-ratio:3/2; width:100%;
+    /* Intentional placeholder: faint analog-camera mark, not an empty box.
+       SWAP: real booth shot → background:url('/assets/booth/xxx.jpg') center/cover; */
+    background:var(--photo-placeholder) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='none' stroke='%239C978C' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5h3l1.4-2.2h5.2L17 8.5h4v11H3z'/%3E%3Ccircle cx='12' cy='13.5' r='3.4'/%3E%3C/svg%3E") center/52px no-repeat;
     display:flex; align-items:flex-end; padding:10px; }
   .print__tag { font-size:10px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; color:var(--accent); background:var(--canvas); padding:3px 7px; border:var(--border) solid var(--accent-border-soft); }
   .print__cap { position:absolute; left:13px; right:13px; bottom:13px; display:flex; align-items:center; justify-content:space-between; }
