@@ -1,6 +1,8 @@
 # future.nostalgia
 
-Lead-magnet landing page for **future.nostalgia** — instant analog prints, turnkey for events and venues.
+Site for **future.nostalgia** — a creative studio & marketing agency.
+
+The homepage (`index.html`) was redesigned in a units.gr × Wes Anderson design system (`styles.css`) on branch `feat/units-wes-redesign`. The `/booth/` analog-print-booth page and `/deck/` pitch deck are **pending a redesign pass** — they currently run on the frozen `styles-legacy.css` (booth) / self-contained styles (deck) and are unlinked from the homepage. See `docs/design-references.md`.
 
 Static site (no build step). Hand-written HTML/CSS/JS so it deploys instantly and has nothing to maintain. Hosted on **Cloudflare Pages**, DNS on **Cloudflare**, domain registered at **NamesPro.ca**, email via **Cloudflare Email Routing → Gmail** (and Gmail "send mail as" for outbound). Zoho is being removed.
 
