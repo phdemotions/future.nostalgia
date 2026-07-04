@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>future.nostalgia — top-nav variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --field:#E7DDC7; --card:#F6F0E1; --ink:#3A362D; --muted:#6B6250; --hair:#D9CFB8;
+  --rose:#D69B94; --ochre:#DBAA5B; --sage:#9FB088; --cadet:#8DA9AE; --terra:#A5522C;
+  --on-accent:#332F27; --on-terra:#FCF7ED;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;--s8:40px;
+  --r:16px; --r-xl:34px; --pill:999px; --rail:208px; --bw-hair:1.5px; --bw:2px;
+  --sans:'Hanken Grotesk',system-ui,sans-serif; --brand:'Fraunces',Georgia,serif;
+  --maxw:1200px;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:#DED3BC;color:var(--ink);font-family:var(--sans);padding:28px;}
+.wrap{max-width:var(--maxw);margin:0 auto;display:flex;flex-direction:column;gap:34px;}
+.label{font-weight:800;font-size:14px;letter-spacing:.02em;margin:0 0 10px;display:flex;gap:12px;align-items:baseline;}
+.label b{background:var(--ink);color:var(--card);border-radius:6px;padding:3px 9px;font-size:12px;}
+.label span{color:var(--muted);font-weight:600;font-size:12.5px;}
+.stage{background:var(--field);border-radius:20px;padding:16px;}
+.frame{display:flex;flex-direction:column;gap:14px;}
+svg{display:block;}
+
+/* shared bits */
+.logo{background:var(--card);border-radius:var(--r);display:flex;align-items:center;padding:var(--s5);}
+.logo__mark{font-family:var(--brand);font-weight:500;font-size:22px;line-height:1;}
+.logo__mark em{font-style:italic;}
+.navlinks{display:flex;align-items:center;gap:var(--s6);}
+.navlinks a{font-weight:700;font-size:15px;text-decoration:none;color:inherit;}
+.cta{display:inline-flex;align-items:center;gap:var(--s3);background:var(--terra);color:var(--on-terra);border-radius:var(--r);padding:var(--s4) var(--s7);font-weight:800;font-size:16px;white-space:nowrap;}
+.cta svg{width:15px;height:15px;stroke:currentColor;stroke-width:var(--bw);fill:none;}
+.pill-cta{border-radius:var(--pill);}
+
+/* context row (rail hint + hero sliver) */
+.ctx{display:grid;grid-template-columns:var(--rail) 1fr;gap:14px;}
+.railhint{background:var(--rose);border-radius:var(--r);padding:var(--s5);min-height:96px;display:flex;flex-direction:column;justify-content:space-between;color:var(--on-accent);}
+.railhint .n{display:flex;justify-content:space-between;font-weight:800;font-size:13px;}
+.railhint .t{font-weight:800;font-size:16px;}
+.herohint{background:var(--card);border-radius:var(--r-xl);padding:26px 32px;display:flex;align-items:center;}
+.herohint h2{margin:0;font-weight:800;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1;letter-spacing:-.02em;}
+.herohint .fr{font-family:var(--brand);font-weight:500;font-style:italic;}
+
+/* ─────────────── V1 · Floating (no band) ─────────────── */
+.top-v1{display:flex;align-items:center;gap:var(--s7);}
+.top-v1 .navlinks{color:var(--ink);}
+.top-v1 .spacer{flex:1;}
+
+/* ─────────────── V2 · Unified cream bar ─────────────── */
+.top-v2{display:flex;align-items:center;gap:var(--s7);background:var(--card);border-radius:var(--r);padding:12px 12px 12px var(--s5);border:var(--bw-hair) solid var(--hair);}
+.top-v2 .logo{background:none;padding:0;}
+.top-v2 .navlinks{color:var(--ink);}
+.top-v2 .spacer{flex:1;}
+.top-v2 .cta{padding:12px var(--s6);}
+
+/* ─────────────── V3 · Cadet band, content grouped right ─────────────── */
+.top-v3{display:flex;align-items:stretch;gap:14px;}
+.top-v3 .band{flex:1;background:var(--cadet);border-radius:var(--r);display:flex;align-items:center;justify-content:flex-end;gap:var(--s7);padding:8px 8px 8px var(--s6);}
+.top-v3 .navlinks{color:var(--on-accent);}
+.top-v3 .cta{padding:12px var(--s6);}
+
+/* ─────────────── V4 · Cadet band, nav centered ─────────────── */
+.top-v4{display:flex;align-items:stretch;gap:14px;}
+.top-v4 .band{flex:1;background:var(--cadet);border-radius:var(--r);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:8px 8px 8px 8px;}
+.top-v4 .navlinks{grid-column:2;color:var(--on-accent);}
+.top-v4 .cta{grid-column:3;justify-self:end;padding:12px var(--s6);}
+
+/* ─────────────── V5 · Ink unified bar ─────────────── */
+.top-v5{display:flex;align-items:center;gap:var(--s7);background:var(--ink);border-radius:var(--r);padding:12px 12px 12px var(--s6);}
+.top-v5 .logo{background:none;padding:0;}
+.top-v5 .logo__mark{color:var(--card);}
+.top-v5 .navlinks{color:#CFC7B6;}
+.top-v5 .navlinks a:hover{color:var(--card);}
+.top-v5 .spacer{flex:1;}
+.top-v5 .cta{padding:12px var(--s6);}
+
+/* ─────────────── V6 · Logo + compact cadet nav-pill ─────────────── */
+.top-v6{display:flex;align-items:stretch;gap:14px;}
+.top-v6 .navpill{background:var(--cadet);border-radius:var(--pill);display:flex;align-items:center;gap:var(--s6);padding:10px 10px 10px var(--s6);}
+.top-v6 .navlinks{color:var(--on-accent);}
+.top-v6 .cta{padding:11px var(--s6);}
+.top-v6 .spacer{flex:1;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- V1 -->
+  <div>
+    <p class="label"><b>V1</b> Floating — no band. Logo card + nav + CTA float on the field.</p>
+    <div class="stage"><div class="frame">
+      <div class="top-v1">
+        <a class="logo"><span class="logo__mark">future<em>.</em>nostalgia</span></a>
+        <nav class="navlinks"><a>What we do</a><a>Contact</a></nav>
+        <span class="spacer"></span>
+        <a class="cta pill-cta">Start a project <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
+      <div class="ctx"><div class="railhint"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div><div class="herohint"><h2>A <span class="fr">creative</span> studio &amp; marketing agency.</h2></div></div>
+    </div></div>
+  </div>
+
+  <!-- V2 -->
+  <div>
+    <p class="label"><b>V2</b> Unified cream bar — one header card, logo + nav + CTA inside.</p>
+    <div class="stage"><div class="frame">
+      <div class="top-v2">
+        <a class="logo"><span class="logo__mark">future<em>.</em>nostalgia</span></a>
+        <nav class="navlinks"><a>What we do</a><a>Contact</a></nav>
+        <span class="spacer"></span>
+        <a class="cta pill-cta">Start a project <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
+      <div class="ctx"><div class="railhint"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div><div class="herohint"><h2>A <span class="fr">creative</span> studio &amp; marketing agency.</h2></div></div>
+    </div></div>
+  </div>
+
+  <!-- V3 -->
+  <div>
+    <p class="label"><b>V3</b> Cadet band — nav + CTA grouped right (kills the empty middle).</p>
+    <div class="stage"><div class="frame">
+      <div class="top-v3">
+        <a class="logo"><span class="logo__mark">future<em>.</em>nostalgia</span></a>
+        <div class="band">
+          <nav class="navlinks"><a>What we do</a><a>Contact</a></nav>
+          <a class="cta pill-cta">Start a project <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div>
+      </div>
+      <div class="ctx"><div class="railhint"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div><div class="herohint"><h2>A <span class="fr">creative</span> studio &amp; marketing agency.</h2></div></div>
+    </div></div>
+  </div>
+
+  <!-- V4 -->
+  <div>
+    <p class="label"><b>V4</b> Cadet band — nav centered, CTA right (fills the band).</p>
+    <div class="stage"><div class="frame">
+      <div class="top-v4">
+        <a class="logo"><span class="logo__mark">future<em>.</em>nostalgia</span></a>
+        <div class="band">
+          <nav class="navlinks"><a>What we do</a><a>Contact</a></nav>
+          <a class="cta pill-cta">Start a project <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div>
+      </div>
+      <div class="ctx"><div class="railhint"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div><div class="herohint"><h2>A <span class="fr">creative</span> studio &amp; marketing agency.</h2></div></div>
+    </div></div>
+  </div>
+
+  <!-- V5 -->
+  <div>
+    <p class="label"><b>V5</b> Ink unified bar — dark header, cream logo + nav, terra CTA.</p>
+    <div class="stage"><div class="frame">
+      <div class="top-v5">
+        <a class="logo"><span class="logo__mark">future<em>.</em>nostalgia</span></a>
+        <nav class="navlinks"><a>What we do</a><a>Contact</a></nav>
+        <span class="spacer"></span>
+        <a class="cta pill-cta">Start a project <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
+      <div class="ctx"><div class="railhint"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div><div class="herohint"><h2>A <span class="fr">creative</span> studio &amp; marketing agency.</h2></div></div>
+    </div></div>
+  </div>
+
+  <!-- V6 -->
+  <div>
+    <p class="label"><b>V6</b> Compact — logo card + a content-width cadet nav-pill (no full band).</p>
+    <div class="stage"><div class="frame">
+      <div class="top-v6">
+        <a class="logo"><span class="logo__mark">future<em>.</em>nostalgia</span></a>
+        <div class="navpill">
+          <nav class="navlinks"><a>What we do</a><a>Contact</a></nav>
+          <a class="cta pill-cta">Start a project <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div>
+        <span class="spacer"></span>
+      </div>
+      <div class="ctx"><div class="railhint"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div><div class="herohint"><h2>A <span class="fr">creative</span> studio &amp; marketing agency.</h2></div></div>
+    </div></div>
+  </div>
+
+</div>
+</body>
+</html>

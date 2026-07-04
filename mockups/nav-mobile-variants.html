@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>mobile top-nav variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --field:#E7DDC7; --card:#F6F0E1; --ink:#3A362D; --muted:#6B6250;
+  --rose:#D69B94; --ochre:#DBAA5B; --terra:#A5522C; --on-accent:#332F27; --on-terra:#FCF7ED;
+  --s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;
+  --r:16px; --r-xl:34px; --pill:999px;
+  --sans:'Hanken Grotesk',system-ui,sans-serif; --brand:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:#CFC4AC;font-family:var(--sans);padding:28px;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;}
+.col{width:390px;}
+.label{font-weight:800;font-size:13px;margin:0 0 10px;color:#3A362D;display:flex;gap:10px;align-items:baseline;}
+.label b{background:var(--ink);color:var(--card);border-radius:6px;padding:3px 9px;font-size:12px;}
+.label span{color:#6B6250;font-weight:600;font-size:12px;}
+.device{width:390px;background:var(--field);border-radius:26px;padding:14px;display:flex;flex-direction:column;gap:14px;}
+svg{display:block;}
+.logomark{font-family:var(--brand);font-weight:500;font-size:22px;line-height:1;}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:var(--s3);background:var(--terra);color:var(--on-terra);border-radius:var(--r);padding:var(--s3) var(--s5);font-weight:800;font-size:15px;white-space:nowrap;}
+.cta svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;}
+/* context: a service card */
+.svc{background:var(--rose);border-radius:var(--r);padding:var(--s5);color:var(--on-accent);min-height:96px;display:flex;flex-direction:column;justify-content:space-between;}
+.svc .n{display:flex;justify-content:space-between;font-weight:800;font-size:13px;}
+.svc .t{font-weight:800;font-size:17px;}
+
+/* M1 — ink bar, single row, terra CTA */
+.m1{background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px var(--s5);}
+.m1 .logomark{color:var(--card);}
+
+/* M2 — ink bar, single row, ghost CTA */
+.m2{background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;padding:10px var(--s5);}
+.m2 .logomark{color:var(--card);}
+.m2 .cta{background:transparent;color:var(--card);border:2px solid rgba(246,240,225,.5);}
+
+/* M3 — light: cream logo card + terra CTA, no ink */
+.m3{display:flex;align-items:stretch;gap:12px;}
+.m3 .logocard{flex:1;background:var(--card);border-radius:var(--r);display:flex;align-items:center;padding:var(--s5);}
+.m3 .cta{padding:var(--s4) var(--s5);}
+
+/* M4 — ink slim, logo centered, no CTA */
+.m4{background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:center;padding:var(--s4);}
+.m4 .logomark{color:var(--card);}
+
+/* M5 — logo left + menu button */
+.m5{background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px var(--s5);}
+.m5 .logomark{color:var(--card);}
+.m5 .menu{width:46px;height:46px;border-radius:12px;background:var(--terra);display:flex;align-items:center;justify-content:center;}
+.m5 .menu svg{width:20px;height:20px;stroke:var(--on-terra);stroke-width:2;}
+
+/* M6 — light logo card + terra CTA on ONE cream bar */
+.m6{background:var(--card);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px var(--s5);}
+.m6 .cta{padding:var(--s3) var(--s5);}
+</style>
+</head>
+<body>
+
+<div class="col">
+  <p class="label"><b>Current</b> Ink, stacked (logo + full-width CTA) — too tall/heavy.</p>
+  <div class="device">
+    <div style="background:var(--ink);border-radius:var(--r);padding:var(--s4);display:flex;flex-direction:column;gap:var(--s4);align-items:center;">
+      <span class="logomark" style="color:var(--card);font-size:24px;">future<em style="font-style:italic">.</em>nostalgia</span>
+      <a class="cta" style="width:100%;padding:var(--s4);">Let's Collab <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    </div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="label"><b>M1</b> Ink, single row — logo left, compact CTA right.</p>
+  <div class="device">
+    <div class="m1"><span class="logomark">future<em style="font-style:italic">.</em>nostalgia</span><a class="cta">Let's Collab <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="label"><b>M2</b> Ink, single row — ghost/outline CTA (lighter).</p>
+  <div class="device">
+    <div class="m2"><span class="logomark">future<em style="font-style:italic">.</em>nostalgia</span><a class="cta">Let's Collab <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="label"><b>M3</b> Light — cream logo card + terra CTA (no ink; matches the cards).</p>
+  <div class="device">
+    <div class="m3"><div class="logocard"><span class="logomark">future<em style="font-style:italic">.</em>nostalgia</span></div><a class="cta">Let's Collab <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="label"><b>M4</b> Ink slim — logo centered, no header CTA (CTA lives in the contact band).</p>
+  <div class="device">
+    <div class="m4"><span class="logomark" style="font-size:24px;">future<em style="font-style:italic">.</em>nostalgia</span></div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="label"><b>M5</b> Ink — logo left + terra menu button.</p>
+  <div class="device">
+    <div class="m5"><span class="logomark">future<em style="font-style:italic">.</em>nostalgia</span><span class="menu"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span></div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="label"><b>M6</b> Cream bar — logo + terra CTA in one light bar (matches cards, keeps CTA).</p>
+  <div class="device">
+    <div class="m6"><span class="logomark">future<em style="font-style:italic">.</em>nostalgia</span><a class="cta">Let's Collab <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <div class="svc"><div class="n">01 <span>↗</span></div><div class="t">App development</div></div>
+  </div>
+</div>
+
+</body>
+</html>
